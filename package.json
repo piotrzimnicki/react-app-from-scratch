@@ -6,7 +6,23 @@
   "scripts": {
     "build": "webpack --mode production --config config/webpack.config.ts",
     "start": "webpack serve --mode development --config config/webpack.config.ts",
-    "type-check": "tsc --pretty --noEmit"
+    "type-check": "tsc --pretty --noEmit",
+    "pre-commit": "lint-staged",
+    "prepare": "npx husky install"
+  },
+  "lint-staged": {
+    "!(*config).{js,jsx,ts,tsx}": [
+      "eslint --fix"
+    ],
+    "src/**/*.{ts,tsx}": [
+      "bash -c 'npm run type-check'"
+    ],
+    "*.{json}": [
+      "prettier --write"
+    ],
+    "*.{css,pcss,scss}": [
+      "prettier --write"
+    ]
   },
   "repository": {
     "type": "git",
@@ -45,6 +61,8 @@
     "eslint-plugin-testing-library": "^6.1.2",
     "eslint-plugin-unused-imports": "^3.0.0",
     "html-webpack-plugin": "^5.5.3",
+    "husky": "^8.0.3",
+    "lint-staged": "^15.1.0",
     "prettier": "^3.1.0",
     "style-loader": "^3.3.3",
     "ts-loader": "^9.5.0",
