@@ -1,7 +1,9 @@
 import HtmlWebpackPlugin from "html-webpack-plugin";
 import path from "path";
 import type { Configuration } from "webpack";
+//@ts-ignore import needed for "devServer" option showing type error
 import webpackDevServer from 'webpack-dev-server';
+
 
 const webpackConfig: Configuration = {
   mode: "development",
@@ -46,11 +48,12 @@ const webpackConfig: Configuration = {
     }),
   ],
   devServer: {
-    static: path.join(__dirname, "dist"),
+    static: path.resolve("dist"),
     compress: true,
     port: 3000,
     liveReload: true,
   },
 };
+
 
 export default webpackConfig;
