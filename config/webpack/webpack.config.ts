@@ -1,9 +1,10 @@
+/* eslint-disable unused-imports/no-unused-imports */
 import HtmlWebpackPlugin from "html-webpack-plugin";
 import path from "path";
 import type { Configuration } from "webpack";
-//@ts-ignore import needed for "devServer" option showing type error
-import webpackDevServer from 'webpack-dev-server';
-
+//@ts-expect import needed for "devServer" key showing type error
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+import webpackDevServer from "webpack-dev-server";
 
 const webpackConfig: Configuration = {
   mode: "development",
@@ -54,6 +55,5 @@ const webpackConfig: Configuration = {
     liveReload: true,
   },
 };
-
 
 export default webpackConfig;
